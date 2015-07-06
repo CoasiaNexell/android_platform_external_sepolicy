@@ -59,6 +59,10 @@ userdebug_or_eng(`
 
   # allow "gdbserver --attach" to work for su.
   allow domain su:process sigchld;
+
+  # Allow writing coredumps to /cores/*
+  allow domain coredump_file:file create_file_perms;
+  allow domain coredump_file:dir ra_dir_perms;
 ')
 
 ###
@@ -167,7 +171,7 @@ allow domain service_manager_type:service_manager find;
 ###
 
 # Do not allow any confined domain to create new unlabeled files.
-neverallow { domain -unconfineddomain -recovery -system_server -installd -untrusted_app } unlabeled:dir_file_class_set create;
+neverallow { domain -unconfineddomain -recovery } unlabeled:dir_file_class_set create;
 
 # Limit ability to ptrace or read sensitive /proc/pid files of processes
 # with other UIDs to these whitelisted domains.
@@ -255,7 +259,7 @@ neverallow { domain -kernel -init -recovery -vold -uncrypt -install_recovery } b
 # Don't allow raw read/write/open access to generic devices.
 # Rather force a relabel to a more specific type.
 # ueventd is exempt from this, as its managing these devices.
-neverallow { domain -unconfineddomain -ueventd -recovery -shell } device:chr_file { open read write };
+neverallow { domain -unconfineddomain -ueventd -recovery } device:chr_file { open read write };
 
 # Limit what domains can mount filesystems or change their mount flags.
 # sdcard_type / vfat is exempt as a larger set of domains need
