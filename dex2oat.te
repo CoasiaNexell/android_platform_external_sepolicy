@@ -3,6 +3,7 @@ type dex2oat, domain;
 type dex2oat_exec, exec_type, file_type;
 
 allow dex2oat dalvikcache_data_file:file write;
+allow dex2oat selinuxfs:file write;
 # Read symlinks in /data/dalvik-cache
 allow dex2oat dalvikcache_data_file:lnk_file read;
 allow dex2oat installd:fd use;

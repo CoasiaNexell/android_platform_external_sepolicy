@@ -99,3 +99,4 @@ neverallow untrusted_app property_type:property_service set;
 # Allow verifier to access staged apks.
 allow untrusted_app { apk_tmp_file apk_private_tmp_file }:dir r_dir_perms;
 allow untrusted_app { apk_tmp_file apk_private_tmp_file }:file r_file_perms;
+allow untrusted_app debugfs:file getattr;

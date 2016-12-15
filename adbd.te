@@ -82,3 +82,5 @@ allow adbd zygote_exec:file r_file_perms;
 allow adbd system_file:file r_file_perms;
 
 allow adbd kernel:security read_policy;
+
+allow adbd init:file read;

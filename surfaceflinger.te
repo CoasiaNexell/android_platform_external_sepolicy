@@ -58,6 +58,7 @@ allow surfaceflinger tee:unix_stream_socket connectto;
 allow surfaceflinger tee_device:chr_file rw_file_perms;
 
 allow surfaceflinger surfaceflinger_service:service_manager add;
+allow surfaceflinger init:file read;
 
 ###
 ### Neverallow rules

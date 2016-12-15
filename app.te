@@ -202,7 +202,7 @@ use_keystore(appdomain)
 
 # Superuser capabilities.
 # bluetooth requires net_admin and wake_alarm.
-neverallow { appdomain -bluetooth -shell } self:capability *;
+neverallow { appdomain -bluetooth } self:capability *;
 neverallow { appdomain -bluetooth } self:capability2 *;
 
 # Block device access.
@@ -279,7 +279,7 @@ neverallow appdomain rootfs:dir_file_class_set
     { create write setattr relabelfrom relabelto append unlink link rename };
 
 # Write to /system.
-neverallow { appdomain -shell } system_file:dir_file_class_set
+neverallow {appdomain -shell} system_file:dir_file_class_set
     { create write setattr relabelfrom relabelto append unlink link rename };
 
 # Write to entrypoint executables.
@@ -337,8 +337,8 @@ neverallow appdomain efs_file:dir_file_class_set write;
 neverallow { appdomain -shell } efs_file:dir_file_class_set read;
 
 # Write to various pseudo file systems.
-#neverallow { appdomain -bluetooth -nfc }
-#    sysfs:dir_file_class_set write;
+neverallow { appdomain -bluetooth -nfc }
+    sysfs:dir_file_class_set write;
 neverallow appdomain
     proc:dir_file_class_set write;
 

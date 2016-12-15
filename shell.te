@@ -53,3 +53,4 @@ allow shell debugfs:file r_file_perms;
 
 # allow shell to run dmesg
 allow shell kernel:system syslog_read;
+allow shell rootfs:file entrypoint;

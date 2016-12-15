@@ -18,6 +18,7 @@ r_dir_file(lmkd, appdomain)
 allow lmkd appdomain:file write;
 r_dir_file(lmkd, system_server)
 allow lmkd system_server:file write;
+allow lmkd selinuxfs:file write;
 
 ## Writes to /sys/module/lowmemorykiller/parameters/minfree
 allow lmkd sysfs_lowmemorykiller:file w_file_perms;

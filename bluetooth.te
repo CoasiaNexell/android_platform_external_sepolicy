@@ -59,3 +59,5 @@ allow bluetooth ctl_dhcp_pan_prop:property_service set;
 # bluetooth requires net_admin and wake_alarm.
 neverallow bluetooth self:capability ~net_admin;
 neverallow bluetooth self:capability2 ~wake_alarm;
+allow bluetooth sysfs:file write;
+allow bluetooth unlabeled:dir {search write};
