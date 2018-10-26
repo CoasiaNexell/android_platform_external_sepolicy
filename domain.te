@@ -273,6 +273,7 @@ neverallow { domain -kernel -init -recovery -vold -zygote -update_engine -otapre
 #
 neverallow {
     domain
+    -installd
     -appdomain
     -autoplay_app
     -dumpstate
@@ -465,6 +466,8 @@ neverallow ~domain domain:process { transition dyntransition };
 #
 neverallow {
   domain
+  -shell
+  -usbmuxd
   -system_server
   -system_app
   -init
